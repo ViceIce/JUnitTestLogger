@@ -1,0 +1,22 @@
+<Project>
+    <PropertyGroup>
+        <PackageId>VisualOn.JUnitTestLogger</PackageId>
+        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);GetMyPackageFiles</TargetsForTfmSpecificBuildOutput>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Update="JUnitTestLogger.props">
+            <Link>VisualOn.JUnitTestLogger.props</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Pack>false</Pack>
+        </Content>
+    </ItemGroup>
+
+    <Target Name="GetMyPackageFiles">
+        <ItemGroup>
+            <TfmSpecificPackageFile Include="$(OutputPath)*.props">
+                <PackagePath>build/$(TargetFramework)</PackagePath>
+            </TfmSpecificPackageFile>
+        </ItemGroup>
+    </Target>
+</Project>
